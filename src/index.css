@@ -1,0 +1,25 @@
+/* Importa a fonte 'Inter' do Google Fonts. 
+   É importante ter uma boa variedade de pesos para flexibilidade no design. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap');
+
+/* Diretivas base do Tailwind CSS. 
+   Elas injetam os estilos base, de componentes e utilitários do Tailwind. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globais aplicados à tag <body> */
+body {
+  /* Define a cor de fundo padrão para todo o site, vinda da nossa paleta */
+  @apply bg-bg-dark;
+
+  /* Define a cor de texto padrão */
+  @apply text-text-light;
+
+  /* Garante que a rolagem da página seja suave, especialmente útil para links de âncora */
+  scroll-behavior: smooth;
+
+  /* Melhora a renderização das fontes em diferentes navegadores */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
