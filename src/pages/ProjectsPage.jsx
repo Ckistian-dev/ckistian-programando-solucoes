@@ -4,38 +4,38 @@ import SectionTitle from '../components/ui/SectionTitle';
 import ProjectCard from '../components/home/ProjectCard'; // Reutilizaremos o card da home
 
 // --- DADOS DOS PROJETOS ---
-// Adicione todos os seus projetos aqui, com uma categoria.
+// ✅ Dados atualizados com seus projetos reais.
 const allProjects = [
   {
     category: 'Sistemas',
-    imgSrc: 'https://placehold.co/600x400/25A1AF/FFFFFF?text=Projeto+Alpha',
-    title: 'Sistema de Gestão Financeira',
-    description: 'Plataforma web completa para controle de despesas e receitas, com dashboards interativos e relatórios automáticos.',
-    tags: ['React', 'Node.js', 'PostgreSQL', 'Chart.js'],
-    link: '#',
+    imgSrc: 'https://i.ibb.co/rRZHkqxb/Captura-de-tela-2025-07-28-173704.jpg',
+    title: 'ERP Talatto - Sistema de Gestão',
+    description: 'Sistema de gestão empresarial (ERP) completo para otimizar processos, com controle de finanças, estoque e relatórios interativos.',
+    tags: ['React', 'Python', 'MySQL', 'Styled-Components'],
+    link: 'https://erp-talatto.vercel.app/login',
   },
   {
     category: 'Sites',
-    imgSrc: 'https://placehold.co/600x400/E1A33B/2C2C3A?text=Projeto+Beta',
-    title: 'E-commerce de Moda',
-    description: 'Loja virtual moderna e responsiva, integrada com os principais gateways de pagamento e com um painel de gerenciamento de produtos intuitivo.',
-    tags: ['Next.js', 'Stripe', 'Tailwind CSS', 'Firebase'],
-    link: '#',
-  },
-  {
-    category: 'Sites',
-    imgSrc: 'https://placehold.co/600x400/F5F5F5/2C2C3A?text=Projeto+Gama',
-    title: 'Landing Page de Evento',
-    description: 'Página de captura de leads para um evento de tecnologia, com design impactante, animações e formulário de inscrição.',
-    tags: ['Vite', 'React', 'Framer Motion'],
-    link: '#',
+    imgSrc: 'https://i.ibb.co/yQdCQJc/Opera-Instant-neo-2025-07-28-172423-la-doce-vida-vercel-app.png',
+    title: 'La Doce Vida - E-commerce',
+    description: 'E-commerce para confeitaria artesanal, com design delicado, catálogo de produtos e integração direta para pedidos via WhatsApp.',
+    tags: ['React', 'Vite', 'CSS Modules'],
+    link: 'https://la-doce-vida.vercel.app',
   },
   {
     category: 'Sistemas',
-    imgSrc: 'https://placehold.co/600x400/3A3A4A/FFFFFF?text=Projeto+Delta',
-    title: 'Dashboard de Análise de Dados',
-    description: 'Ferramenta de BI para visualização de métricas de vendas em tempo real, com gráficos dinâmicos e filtros avançados.',
-    tags: ['React', 'D3.js', 'Express'],
+    imgSrc: 'https://i.ibb.co/HCv9FwB/Opera-Instant-neo-2025-07-28-172653-www-ruachdelivery-com-br.png',
+    title: 'Ruach Delivery',
+    description: 'Plataforma de delivery de alimentos com cardápio digital, sistema de pedidos online e área administrativa para gerenciamento.',
+    tags: ['React', 'Firebase', 'Styled-Components'],
+    link: 'https://www.ruachdelivery.com.br',
+  },
+  {
+    category: 'Sites',
+    imgSrc: 'https://placehold.co/600x400/F5F5F5/2C2C3A?text=Projeto+Exemplo',
+    title: 'Landing Page para Evento Tech',
+    description: 'Página de captura de leads para um evento de tecnologia, com design impactante, animações e formulário de inscrição.',
+    tags: ['Vite', 'React', 'Framer Motion'],
     link: '#',
   },
   // Adicione mais projetos aqui...
@@ -87,7 +87,7 @@ const ProjectsPage = () => {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           <AnimatePresence>
-            {filteredProjects.map((project, index) => (
+            {filteredProjects.map((project) => (
               <ProjectCard key={project.title} {...project} />
             ))}
           </AnimatePresence>
