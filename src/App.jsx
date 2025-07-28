@@ -20,6 +20,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Header from './components/common/Header';
 import Footer from './components/common/Footer';
+import ProjectsPage from './pages/ProjectsPage';
 
 
 function App() {
@@ -28,28 +29,19 @@ function App() {
   const location = useLocation();
 
   return (
-    // Fragmento raiz da nossa aplicação
     <>
-      {/* O Header e o Footer ficam fora do Routes para aparecerem em todas as páginas */}
       <Header />
-
-      {/* O 'pt-20' no main serve como um espaçamento para não ficar atrás do cabeçalho fixo */}
       <main className="pt-20">
-        {/* AnimatePresence é o componente mágico do Framer Motion 
-            que permite animar componentes quando eles são montados ou desmontados. */}
         <AnimatePresence mode="wait">
-          {/* O 'key={location.pathname}' é crucial. Ele diz ao AnimatePresence para 
-              tratar componentes em rotas diferentes como componentes distintos, 
-              o que dispara as animações de entrada e saída. */}
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/crie-seu-site" element={<QuoteBuilder />} />
             <Route path="/sobre" element={<About />} />
             <Route path="/contato" element={<Contact />} />
+            <Route path="/projetos" element={<ProjectsPage />} />
           </Routes>
         </AnimatePresence>
       </main>
-      
       <Footer />
     </>
   );

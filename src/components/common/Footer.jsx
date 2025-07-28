@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <footer className="bg-bg-card border-t border-border-color/50 text-text-muted">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
           
           {/* Coluna 1: Sobre */}
           <div className="md:col-span-1">
@@ -38,7 +38,7 @@ const Footer = () => {
           {/* Coluna 4: Redes Sociais */}
           <div>
             <h4 className="font-bold text-text-light mb-4">Siga-nos</h4>
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center">
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-primary transition-colors"><FaLinkedin /></a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-primary transition-colors"><FaGithub /></a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-primary transition-colors"><FaWhatsapp /></a>
