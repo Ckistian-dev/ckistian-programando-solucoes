@@ -7,13 +7,20 @@ const QuoteSummaryBar = ({ selections, totalPrice }) => {
     // ✅ **IMPORTANTE:** Substitua pelo seu número de WhatsApp.
     const phoneNumber = '5545991068514'; 
     
-    // ✅ Mensagem de WhatsApp aprimorada com emojis e melhor formatação
-    let message = "Olá, Ckistian! 👋\n\nVim pelo seu site e montei uma proposta de orçamento. Gostaria de discutir os detalhes!\n\n";
-    message += "📝 *Resumo do Orçamento:*\n\n";
+    // ✅ Mensagem de WhatsApp corrigida para garantir o envio correto dos emojis
+    const wave = String.fromCodePoint(0x1F44B);
+    const memo = String.fromCodePoint(0x1F4DD);
+    const laptop = String.fromCodePoint(0x1F4BB);
+    const sparkles = String.fromCodePoint(0x2728);
+    const moneyBag = String.fromCodePoint(0x1F4B0);
+    const rocket = String.fromCodePoint(0x1F680);
+
+    let message = `Olá, Ckistian! ${wave}\n\nVim pelo seu site e montei uma proposta de orçamento. Gostaria de discutir os detalhes!\n\n`;
+    message += `${memo} *Resumo do Orçamento:*\n\n`;
 
     // Adiciona o tipo de site
     if (selections.siteType && selections.siteType.length > 0) {
-        message += "💻 *Tipo de Site:*\n";
+        message += `${laptop} *Tipo de Site:*\n`;
         selections.siteType.forEach(option => {
             message += `- ${option.title}\n`;
         });
@@ -22,7 +29,7 @@ const QuoteSummaryBar = ({ selections, totalPrice }) => {
 
     // Adiciona as funcionalidades extras
     if (selections.features && selections.features.length > 0) {
-        message += "✨ *Funcionalidades Extras:*\n";
+        message += `${sparkles} *Funcionalidades Extras:*\n`;
         selections.features.forEach(option => {
             message += `- ${option.title}\n`;
         });
@@ -31,12 +38,12 @@ const QuoteSummaryBar = ({ selections, totalPrice }) => {
 
     // Adiciona o preço total
     const formattedPrice = totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    message += `💰 *Valor Total Estimado:*\n*${formattedPrice}*\n\n`;
+    message += `${moneyBag} *Valor Total Estimado:*\n*${formattedPrice}*\n\n`;
 
-    message += "Aguardo seu contato para darmos o próximo passo! 🚀";
+    message += `Aguardo seu contato para darmos o próximo passo! ${rocket}`;
 
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
     
     window.open(whatsappUrl, '_blank');
   };
