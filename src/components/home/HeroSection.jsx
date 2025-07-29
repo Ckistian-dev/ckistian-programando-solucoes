@@ -1,50 +1,29 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 
-// --- IMAGENS DO CARROSSEL DE FUNDO ---
-const backgroundImages = [
-  'https://i.ibb.co/hJf31sy4/image.png',
-  'https://i.ibb.co/LD00ZGQz/Gemini-Generated-Image-xvpe93xvpe93xvpe.png',
-  'https://i.ibb.co/qFkvXRD9/Gemini-Generated-Image-cp3jzscp3jzscp3j.png',
-  'https://i.ibb.co/5XfjZnM9/22bf94e6-50b7-47dd-bd87-f52126d2ed98.png',
-  'https://i.ibb.co/jPLKyGTz/4167515c-08b5-4e68-89f9-015c9ff856ab.png'
-];
+// --- IMAGEM DE FUNDO ÚNICA ---
+const backgroundImage = 'https://i.ibb.co/qFkvXRD9/Gemini-Generated-Image-cp3jzscp3jzscp3j.png';
 
 const HeroSection = () => {
-  const [bgIndex, setBgIndex] = useState(0);
-
-  // Efeito para trocar a imagem do carrossel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBgIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
-    }, 20000); // ✅ Aumentado para 20 segundos por imagem
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <section className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden">
 
-      {/* Carrossel de Imagens no Fundo com Animação Melhorada */}
+      {/* Imagem de Fundo com Animação de Zoom em Loop */}
       <div className="absolute inset-0 w-full h-full -z-10">
-        {backgroundImages.map((img, index) => (
-          <motion.img
-            key={index}
-            src={img}
-            alt="Fundo tecnológico abstrato"
-            className="absolute inset-0 w-full h-full object-cover blur-sm" // Desfoque sutil
-            animate={{
-              opacity: index === bgIndex ? 1 : 0, 
-              scale: index === bgIndex ? 1.15 : 1,
-            }}
-            transition={{
-              // ✅ A transição de opacidade (o "merge") agora dura 6 segundos
-              opacity: { duration: 6, ease: 'easeInOut' },
-              // ✅ O zoom agora dura os 20 segundos em que a imagem está na tela
-              scale: { duration: 20, ease: 'linear' },
-            }}
-          />
-        ))}
+        <motion.img
+          src={backgroundImage}
+          alt="Fundo tecnológico abstrato"
+          className="absolute inset-0 w-full h-full object-cover blur-sm"
+          animate={{
+            scale: [1, 1.2, 1], // Keyframes: Inicia em 100%, vai para 110%, volta para 100%
+          }}
+          transition={{
+            duration: 20, // Duração de um ciclo completo (ida e volta)
+            ease: 'easeInOut',
+            repeat: Infinity, // Repete infinitamente
+            repeatType: 'mirror', // O loop vai e volta (1 -> 1.1 -> 1)
+          }}
+        />
         {/* Overlay para garantir a legibilidade do texto */}
         <div className="absolute inset-0 bg-bg-dark/70"></div>
       </div>

@@ -57,7 +57,7 @@ const About = () => {
             transition={{ duration: 0.7 }}
           >
             <h2 className="text-3xl font-bold mb-4 text-text-light">Quem está por trás do código?</h2>
-            <p className="text-text-muted mb-4">Olá! Eu sou Ckistian, um desenvolvedor apaixonado por transformar ideias em realidade digital. Com anos de experiência no mercado, fundei a "Ckistian Programando Soluções" com um objetivo claro: oferecer um serviço de desenvolvimento que une excelência técnica com um atendimento próximo e transparente.</p>
+            <p className="text-text-muted mb-4">Olá! Eu sou Cristian, um desenvolvedor apaixonado por transformar ideias em realidade digital. Com anos de experiência no mercado, fundei a "Ckistian Programando Soluções" com um objetivo claro: oferecer um serviço de desenvolvimento que une excelência técnica com um atendimento próximo e transparente.</p>
             <p className="text-text-muted">Acredito que cada projeto é uma oportunidade única de resolver um problema real e fazer a diferença para um negócio.</p>
           </motion.div>
           <motion.div
@@ -67,9 +67,13 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <div className="w-64 h-64 bg-bg-card rounded-full flex items-center justify-center">
-              {/* Substitua por sua foto real */}
-              <FaUserSecret className="w-32 h-32 text-primary" />
+            {/* ✅ Imagem com estilo circular e borda */}
+            <div className="w-64 h-64 rounded-full overflow-hidden shadow-lg border-4 border-primary/50">
+              <img
+                className="w-full h-full object-cover"
+                src="https://i.ibb.co/NnyGyLL5/Imagem-do-Whats-App-de-2025-07-29-s-15-27-26-a73b360a.jpg"
+                alt="Foto de Ckistian"
+              />
             </div>
           </motion.div>
         </div>
@@ -102,34 +106,34 @@ const About = () => {
         <div className="container mx-auto px-4">
           <SectionTitle title="Nosso Processo de Trabalho" subtitle="Etapas claras para um resultado incrível" />
           <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-x-8 gap-y-12 relative">
-             <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-border-color hidden md:block"></div>
-              {workProcess.map((item, index) => (
-                 <motion.div 
-                    key={index}
-                    className="text-center relative bg-bg-dark px-4"
-                    initial={{ y: 50, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                    <div className="w-20 h-20 rounded-full bg-primary text-bg-dark flex items-center justify-center font-bold text-2xl mx-auto mb-4 border-4 border-bg-card z-10 relative">{item.step}</div>
-                    <h4 className="font-bold text-lg text-text-light mb-2">{item.title}</h4>
-                    <p className="text-text-muted text-sm">{item.description}</p>
-                </motion.div>
-              ))}
+            <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-0.5 bg-border-color hidden md:block"></div>
+            {workProcess.map((item, index) => (
+              <motion.div
+                key={index}
+                className="text-center relative bg-bg-dark px-4"
+                initial={{ y: 50, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <div className="w-20 h-20 rounded-full bg-primary text-bg-dark flex items-center justify-center font-bold text-2xl mx-auto mb-4 border-4 border-bg-card z-10 relative">{item.step}</div>
+                <h4 className="font-bold text-lg text-text-light mb-2">{item.title}</h4>
+                <p className="text-text-muted text-sm">{item.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
-      
-       {/* Seção CTA */}
+
+      {/* Seção CTA */}
       <section className="py-20 bg-primary">
-          <div className="container mx-auto px-4 text-center">
-              <h2 className="text-3xl font-bold text-bg-dark mb-4">Tem uma ideia? Vamos transformá-la em realidade.</h2>
-              <p className="text-bg-dark/80 mb-8 max-w-2xl mx-auto">Estou pronto para ouvir sobre seu projeto e criar uma solução digital que atenda perfeitamente às suas necessidades.</p>
-              <Button to="/crie-seu-site" variant="accent">
-                  Começar meu Orçamento
-              </Button>
-          </div>
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold text-bg-dark mb-4">Tem uma ideia? Vamos transformá-la em realidade.</h2>
+          <p className="text-bg-dark/80 mb-8 max-w-2xl mx-auto">Estou pronto para ouvir sobre seu projeto e criar uma solução digital que atenda perfeitamente às suas necessidades.</p>
+          <Button to="/crie-seu-site" variant="accent">
+            Começar meu Orçamento
+          </Button>
+        </div>
       </section>
     </motion.div>
   );

@@ -16,27 +16,19 @@ const allProjects = [
   },
   {
     category: 'Sites',
-    imgSrc: 'https://i.ibb.co/yQdCQJc/Opera-Instant-neo-2025-07-28-172423-la-doce-vida-vercel-app.png',
-    title: 'La Doce Vida - E-commerce',
+    imgSrc: 'https://i.ibb.co/K1T3Fm9/Captura-de-tela-2025-07-28-194038.jpg',
+    title: 'La Doce Vida',
     description: 'E-commerce para confeitaria artesanal, com design delicado, catálogo de produtos e integração direta para pedidos via WhatsApp.',
     tags: ['React', 'Vite', 'CSS Modules'],
     link: 'https://la-doce-vida.vercel.app',
   },
   {
-    category: 'Sistemas',
-    imgSrc: 'https://i.ibb.co/HCv9FwB/Opera-Instant-neo-2025-07-28-172653-www-ruachdelivery-com-br.png',
+    category: 'Sites',
+    imgSrc: 'https://i.ibb.co/fd8rDb9V/Captura-de-tela-2025-07-28-194131.jpg',
     title: 'Ruach Delivery',
     description: 'Plataforma de delivery de alimentos com cardápio digital, sistema de pedidos online e área administrativa para gerenciamento.',
     tags: ['React', 'Firebase', 'Styled-Components'],
     link: 'https://www.ruachdelivery.com.br',
-  },
-  {
-    category: 'Sites',
-    imgSrc: 'https://placehold.co/600x400/F5F5F5/2C2C3A?text=Projeto+Exemplo',
-    title: 'Landing Page para Evento Tech',
-    description: 'Página de captura de leads para um evento de tecnologia, com design impactante, animações e formulário de inscrição.',
-    tags: ['Vite', 'React', 'Framer Motion'],
-    link: '#',
   },
   // Adicione mais projetos aqui...
 ];
@@ -70,11 +62,10 @@ const ProjectsPage = () => {
             <button
               key={category}
               onClick={() => setActiveFilter(category)}
-              className={`px-6 py-2 font-semibold rounded-lg transition-colors ${
-                activeFilter === category
+              className={`px-6 py-2 font-semibold rounded-lg transition-colors ${activeFilter === category
                   ? 'bg-primary text-white'
                   : 'bg-bg-card text-text-muted hover:bg-primary/50'
-              }`}
+                }`}
             >
               {category}
             </button>

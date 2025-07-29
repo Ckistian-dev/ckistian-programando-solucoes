@@ -34,12 +34,12 @@ const navItemVariants = {
 
 // Componente para o ícone animado (Hamburger -> X)
 const MenuToggle = ({ toggle, isOpen }) => (
-  <button onClick={toggle} className="relative z-50 w-8 h-8 focus:outline-none pr-4">
+  <button onClick={toggle} className="relative z-50 w-8 h-8 focus:outline-none">
     <motion.div
       className="absolute h-0.5 w-8 bg-text-light"
       variants={{
         open: { rotate: 45, y: 3 },
-        closed: { rotate: 0, y: -8 }, // ✅ Aumentado de -4 para -6
+        closed: { rotate: 0, y: -8 },
       }}
       animate={isOpen ? "open" : "closed"}
       transition={{ duration: 0.3 }}
@@ -57,7 +57,7 @@ const MenuToggle = ({ toggle, isOpen }) => (
       className="absolute h-0.5 w-8 bg-text-light"
       variants={{
         open: { rotate: -45, y: 3 },
-        closed: { rotate: 0, y: 8 }, // ✅ Aumentado de 4 para 6
+        closed: { rotate: 0, y: 8 },
       }}
       animate={isOpen ? "open" : "closed"}
       transition={{ duration: 0.3 }}
@@ -89,8 +89,7 @@ const Header = () => {
             <img 
               src="https://i.ibb.co/GvcKbmSb/Chat-GPT-Image-14-de-abr-de-2025-15-33-47-removebg-preview.png" 
               alt="Ckistian Programando Soluções Logo"
-              // A altura foi ajustada para caber no cabeçalho
-              className="h-40 w-auto transition-transform duration-300 hover:scale-105 pt-2"
+              className="h-40 w-auto transition-transform duration-300 hover:scale-105 mt-2"
             />
           </Link>
 
@@ -107,13 +106,29 @@ const Header = () => {
             ))}
           </nav>
 
+          {/* ✅ Botão de Orçamento Animado para Desktop */}
           <div className="hidden md:block">
-              <Link 
-                to="/crie-seu-site"
-                className="bg-accent text-bg-dark font-bold py-2 px-6 rounded-lg hover:bg-opacity-80 transition-all transform hover:scale-105"
+            <Link to="/crie-seu-site">
+              <motion.button
+                className="relative px-6 py-2 font-bold text-bg-dark bg-accent rounded-lg overflow-hidden shadow-lg"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 17 }}
               >
-                Faça um Orçamento
-              </Link>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                  initial={{ x: "-150%" }}
+                  animate={{ x: "150%" }}
+                  transition={{
+                    repeat: Infinity,
+                    duration: 3,
+                    ease: "linear",
+                    delay: 2
+                  }}
+                />
+                <span className="relative">Faça um Orçamento</span>
+              </motion.button>
+            </Link>
           </div>
 
           {/* Botão do Menu Mobile Animado */}
@@ -151,13 +166,28 @@ const Header = () => {
                   </NavLink>
                 </motion.div>
               ))}
+              {/* ✅ Botão de Orçamento Animado para Mobile */}
               <motion.div variants={navItemVariants}>
-                <Link 
-                  to="/crie-seu-site"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="bg-accent text-bg-dark font-bold py-3 px-8 rounded-lg hover:bg-opacity-80 transition-all text-xl"
-                >
-                  Faça um Orçamento
+                <Link to="/crie-seu-site" onClick={() => setMobileMenuOpen(false)}>
+                  <motion.button
+                    className="relative px-8 py-3 font-bold text-bg-dark bg-accent rounded-lg overflow-hidden text-xl shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                  >
+                     <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
+                      initial={{ x: "-150%" }}
+                      animate={{ x: "150%" }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 3,
+                        ease: "linear",
+                        delay: 2
+                      }}
+                    />
+                    <span className="relative">Faça um Orçamento</span>
+                  </motion.button>
                 </Link>
               </motion.div>
             </motion.nav>
