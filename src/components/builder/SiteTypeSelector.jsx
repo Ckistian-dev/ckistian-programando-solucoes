@@ -73,9 +73,9 @@ const SiteTypeSelector = ({ options, selectedOption, onSelect }) => {
         <img
           src={selectedOption.img}
           alt={selectedOption.title}
-          className="w-full h-64 object-cover"
+          className="w-full h-64 object-cover md:h-[50lvh]"
         />
-        <div className="p-6">
+        <div className="p-4">
           <h3 className="text-2xl font-bold text-text-light mb-2">{selectedOption.title}</h3>
           <p className="text-text-muted mb-4">{selectedOption.description}</p>
           <div className="flex justify-between items-center">
@@ -87,7 +87,7 @@ const SiteTypeSelector = ({ options, selectedOption, onSelect }) => {
               onClick={() => setIsOpen(!isOpen)}
               className="flex items-center gap-3 bg-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-80 transition-all"
             >
-              Alterar
+              Selecione
               <motion.div animate={{ rotate: isOpen ? 180 : 0 }}>
                 <FaChevronDown />
               </motion.div>
@@ -111,16 +111,16 @@ const SiteTypeSelector = ({ options, selectedOption, onSelect }) => {
               initial="closed"
               animate="open"
               exit="closed"
-              className="p-2"
+              className="p-1"
             >
               {options.map(option => (
                 <motion.li
                   key={option.title}
                   variants={itemVariants}
                   onClick={() => handleOptionClick(option)}
-                  className="flex items-start gap-4 p-4 hover:bg-bg-dark cursor-pointer transition-colors border-b border-border-color/30 last:border-b-0"
+                  className="flex items-start gap-4 p-2 hover:bg-bg-dark cursor-pointer transition-colors border-b border-border-color/30 last:border-b-0"
                 >
-                  <img src={option.img} alt={option.title} className="w-28 h-20 object-cover rounded-md flex-shrink-0"/>
+                  <img src={option.img} alt={option.title} className="w-1/3 h-20 object-cover rounded-md flex-shrink-0"/>
                   <div className="flex-grow">
                     <div className="flex justify-between items-center mb-1">
                       <h4 className="font-bold text-text-light">{option.title}</h4>

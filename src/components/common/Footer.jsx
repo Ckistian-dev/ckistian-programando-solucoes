@@ -7,23 +7,23 @@ const Footer = () => {
   return (
     <footer className="bg-bg-card border-t border-border-color/50 text-text-muted">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-center">
+        {/* Layout atualizado: colunas extras ocultas no mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
 
           {/* Coluna 1: Sobre */}
-          <div className="col-span-1">
-            <Link to="/">
+          <div className="md:col-span-1">
+            <Link to="/" className="flex justify-center mb-4">
               <img
                 src="https://i.ibb.co/GvcKbmSb/Chat-GPT-Image-14-de-abr-de-2025-15-33-47-removebg-preview.png"
                 alt="Ckistian Programando Soluções Logo"
-                // A altura foi ajustada para caber no cabeçalho
                 className="h-60 w-auto transition-transform duration-300 hover:scale-105 justify-self-center my-[-80px]"
               />
             </Link>
-            <p className="text-sm">Desenvolvendo soluções digitais inovadoras para impulsionar o seu negócio. Qualidade, performance e design sob medida.</p>
+            <p className="text-sm max-w-xs mx-auto md:mx-0">Desenvolvendo soluções digitais inovadoras para impulsionar o seu negócio.</p>
           </div>
 
-          {/* Coluna 2: Navegação */}
-          <div>
+          {/* Coluna 2: Navegação (Oculta no mobile) */}
+          <div className="hidden md:block">
             <h4 className="font-bold text-text-light mb-4">Navegação</h4>
             <ul className="space-y-2">
               <li><Link to="/" className="hover:text-primary transition-colors">Home</Link></li>
@@ -33,18 +33,21 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Coluna 3: Contato */}
-          <div>
+          {/* Coluna 3: Contato (Oculta no mobile) */}
+          <div className="hidden md:block">
             <h4 className="font-bold text-text-light mb-4">Contato</h4>
             <ul className="space-y-2">
               <li className="hover:text-primary transition-colors cursor-pointer">crisgkist@gmail.com</li>
-              <li></li>
-              <a href="https://api.whatsapp.com/send/?phone=5545991068514&text=Olá%21+Tenho+interesse+no+seu+trabalho.&type=phone_number&app_absent=0" target="_blank" className="hover:text-primary transition-colors cursor-pointer">+55 (45) 99106-8514</a>
+              <li>
+                <a href="https://api.whatsapp.com/send/?phone=5545991068514&text=Olá%21+Tenho+interesse+no+seu+trabalho.&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors cursor-pointer">
+                  +55 (45) 99106-8514
+                </a>
+              </li>
             </ul>
           </div>
 
-          {/* Coluna 4: Redes Sociais */}
-          <div>
+          {/* Coluna 4: Redes Sociais (Oculta no mobile) */}
+          <div className="hidden md:block">
             <h4 className="font-bold text-text-light mb-4">Siga-nos</h4>
             <div className="flex space-x-4 justify-center">
               <a href="https://www.linkedin.com/in/cristiankist" target="_blank" rel="noopener noreferrer" className="text-2xl hover:text-primary transition-colors"><FaLinkedin /></a>
