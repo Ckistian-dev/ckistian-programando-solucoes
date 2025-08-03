@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
@@ -15,6 +16,11 @@ import FloatingWhatsAppButton from './components/common/FloatingWhatsAppButton';
 
 function App() {
   const location = useLocation();
+
+  // ✅ Efeito que rola a página para o topo sempre que a rota muda.
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <>
