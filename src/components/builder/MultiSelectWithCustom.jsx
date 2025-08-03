@@ -67,7 +67,7 @@ const MultiSelectWithCustom = ({ options, onSelectionChange, initialValue = [] }
           onClick={handleAddCustom}
           className="flex-shrink-0 flex items-center gap-2 bg-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-opacity-80 transition-all"
         >
-          <FaPlus /> Adicionar
+          <FaPlus />
         </button>
       </div>
 
