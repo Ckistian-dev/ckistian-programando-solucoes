@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const StepTitle = ({ stepNumber, title }) => {
   return (
     <motion.div
-      className="flex items-center gap-4 md:gap-6 mb-4"
+      className="flex items-center gap-4 md:gap-6 mb-4 md:ml-56"
       initial={{ opacity: 0, y: -20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.5 }}

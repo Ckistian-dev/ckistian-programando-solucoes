@@ -67,7 +67,7 @@ const SiteTypeSelector = ({ options, selectedOption, onSelect }) => {
   };
 
   return (
-    <div className="relative max-w-full mx-auto" ref={dropdownRef}>
+    <div className="relative max-w-3xl mx-auto" ref={dropdownRef}>
       {/* Card Principal (Opção Selecionada) */}
       <div className="bg-bg-card rounded-lg shadow-xl overflow-hidden">
         <img
