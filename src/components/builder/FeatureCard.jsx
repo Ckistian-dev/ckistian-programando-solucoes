@@ -18,11 +18,12 @@ const InfoModal = ({ option, onClose }) => {
         exit={{ scale: 0.9, opacity: 0 }}
         transition={{ type: 'spring', stiffness: 200, damping: 25 }}
         className="relative bg-bg-card w-full max-w-lg rounded-xl shadow-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e) => e.stopPropagation()} // Impede que o clique no modal feche-o
       >
         <img src={option.img} alt={option.title} className="w-full h-56 object-cover" />
         <div className="p-6">
           <h3 className="text-2xl font-bold text-text-light mb-4">{option.title}</h3>
+          {/* Este parágrafo usa a descrição completa */}
           <p className="text-text-muted">{option.description}</p>
         </div>
         <button
@@ -42,7 +43,7 @@ const FeatureCard = ({ option, isSelected, onSelect }) => {
   return (
     <>
       <div
-        className={`relative w-full flex gap-2 md:gap-6 p-2 rounded-xl border-2 transition-all duration-300 ${
+        className={`relative w-full flex gap-4 md:gap-6 p-2 rounded-xl border-2 transition-all duration-300 ${
           isSelected
             ? 'border-primary bg-primary/10 shadow-lg'
             : 'border-border-color bg-bg-card'
@@ -89,6 +90,7 @@ const FeatureCard = ({ option, isSelected, onSelect }) => {
 
           <div className="mt-2 flex-grow">
             <p className="text-sm md:text-base text-text-muted">
+              {/* Este parágrafo usa a descrição curta */}
               {option.shortDescription}
               <button
                 onClick={() => setModalOpen(true)}

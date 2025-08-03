@@ -1,63 +1,7 @@
 import { motion } from 'framer-motion';
 import { FaWhatsapp } from 'react-icons/fa';
 
-const QuoteSummaryBar = ({ selections, totalPrice }) => {
-  
-  const handleFinalizeQuote = () => {
-    // ✅ **IMPORTANTE:** Substitua pelo seu número de WhatsApp.
-    const phoneNumber = '5545991068514'; 
-    
-    // Emojis definidos por Unicode para garantir compatibilidade
-    const wave = String.fromCodePoint(0x1F44B);
-    const memo = String.fromCodePoint(0x1F4DD);
-    const laptop = String.fromCodePoint(0x1F4BB);
-    const sparkles = String.fromCodePoint(0x2728);
-    const paletteEmoji = String.fromCodePoint(0x1F3A8); // Emoji de paleta
-    const moneyBag = String.fromCodePoint(0x1F4B0);
-    const rocket = String.fromCodePoint(0x1F680);
-
-    let message = `Olá, Ckistian! ${wave}\n\nVim pelo seu site e montei uma proposta de orçamento. Gostaria de discutir os detalhes!\n\n`;
-    message += `${memo} *Resumo do Orçamento:*\n\n`;
-
-    // Adiciona o tipo de site
-    if (selections.siteType && selections.siteType.length > 0) {
-        message += `${laptop} *Tipo de Site:*\n`;
-        selections.siteType.forEach(option => {
-            message += `- ${option.title}\n`;
-        });
-        message += '\n';
-    }
-
-    // Adiciona as funcionalidades extras
-    if (selections.features && selections.features.length > 0) {
-        message += `${sparkles} *Funcionalidades Extras:*\n`;
-        selections.features.forEach(option => {
-            message += `- ${option.title}\n`;
-        });
-        message += '\n';
-    }
-
-    // ✅ Adiciona a paleta de cores à mensagem
-    if (selections.colorPalette && selections.colorPalette.primary) {
-      const palette = selections.colorPalette;
-      message += `${paletteEmoji} *Paleta de Cores Escolhida:*\n`;
-      message += `- Primária: ${palette.primary}\n`;
-      message += `- Destaque: ${palette.accent}\n`;
-      message += `- Fundo: ${palette.bg}\n\n`;
-    }
-
-    // Adiciona o preço total
-    const formattedPrice = totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    message += `${moneyBag} *Investimento Estimado:*\n*${formattedPrice}*\n\n`;
-
-    message += `Aguardo seu contato para darmos o próximo passo! ${rocket}`;
-
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
-    
-    window.open(whatsappUrl, '_blank');
-  };
-
+const QuoteSummaryBar = ({ totalPrice, onFinalize }) => {
   return (
     <motion.div
       initial={{ y: "100%" }}
@@ -65,24 +9,20 @@ const QuoteSummaryBar = ({ selections, totalPrice }) => {
       transition={{ type: 'spring', stiffness: 100, damping: 20 }}
       className="fixed bottom-0 left-0 right-0 z-30 p-4"
     >
-      {/* Container para limitar a largura e centralizar */}
       <div className="max-w-md mx-auto">
-        <div className="bg-bg-card/20 backdrop-blur-lg rounded-xl shadow-2xl p-2 flex flex-col items-center gap-2 border border-border-color/50">
-          
-          {/* Layout do valor atualizado */}
-          <div className="flex items-baseline gap-2">
+        <div className="bg-bg-card/90 backdrop-blur-lg rounded-xl shadow-2xl p-2 flex items-center gap-2 border border-border-color/50">
+          <div className="flex-grow flex items-baseline gap-2 p-2">
             <span className="text-base font-semibold text-text-muted">Investimento:</span>
-            <p className="text-base font-bold text-primary">
+            <p className="text-xl font-bold text-primary">
               R$ {totalPrice.toLocaleString('pt-BR')}
             </p>
           </div>
-          
           <button
-            onClick={handleFinalizeQuote}
-            className="w-full flex items-center justify-center gap-3 bg-green-500 text-white font-bold py-3 px-6 rounded-lg hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg"
+            onClick={onFinalize}
+            className="flex-shrink-0 flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 px-4 rounded-lg hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg"
           >
-            <FaWhatsapp className="w-6 h-6" />
-            Finalizar Orçamento
+            <FaWhatsapp className="w-5 h-5" />
+            <span>Enviar</span>
           </button>
         </div>
       </div>
