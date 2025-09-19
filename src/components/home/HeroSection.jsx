@@ -8,22 +8,33 @@ const HeroSection = () => {
   return (
     <section className="min-h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden">
 
-      {/* Imagem de Fundo com Animação de Zoom em Loop */}
+      {/* Container da Imagem de Fundo */}
       <div className="absolute inset-0 w-full h-full -z-10">
-        <motion.img
-          src={backgroundImage}
-          alt="Fundo tecnológico abstrato"
-          className="absolute inset-0 w-full h-full object-cover blur-sm"
-          animate={{
-            scale: [1, 1.2, 1], // Keyframes: Inicia em 100%, vai para 110%, volta para 100%
-          }}
-          transition={{
-            duration: 20, // Duração de um ciclo completo (ida e volta)
-            ease: 'easeInOut',
-            repeat: Infinity, // Repete infinitamente
-            repeatType: 'mirror', // O loop vai e volta (1 -> 1.1 -> 1)
-          }}
-        />
+        
+        {/* --- ALTERAÇÃO PRINCIPAL ---
+          Adicionamos um wrapper para a imagem com classes de escala responsivas.
+          - 'scale-150': Aumenta a imagem em 50% por padrão (mobile-first).
+          - 'md:scale-100': Reseta a escala para 100% em telas médias (tablet) ou maiores.
+          Você pode ajustar o valor 'scale-150' para 'scale-125' ou outro se o zoom for excessivo.
+        */}
+        <div className="absolute inset-0 w-full h-full scale-150 md:scale-100">
+          <motion.img
+            src={backgroundImage}
+            alt="Fundo tecnológico abstrato"
+            // A classe 'relative' é mais apropriada aqui do que 'absolute inset-0' já que o wrapper já cuida do posicionamento
+            className="relative w-full h-full object-cover blur-sm"
+            animate={{
+              scale: [1, 1.1, 1], // Reduzi um pouco a animação para não ficar excessiva com o novo zoom base
+            }}
+            transition={{
+              duration: 20,
+              ease: 'easeInOut',
+              repeat: Infinity,
+              repeatType: 'mirror',
+            }}
+          />
+        </div>
+
         {/* Overlay para garantir a legibilidade do texto */}
         <div className="absolute inset-0 bg-bg-dark/70"></div>
       </div>
